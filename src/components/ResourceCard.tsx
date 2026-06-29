@@ -2,28 +2,40 @@ import type { Resource } from '../types/resource';
 
 type Props = {
   resource: Resource;
+  onClick: () => void;
 };
 
-export default function ResourceCard({ resource }: Props) {
+export default function ResourceCard({ resource, onClick }: Props) {
   return (
-    <div className='border rounded-lg p-4 shadow-sm bg-white'>
+    <article
+      onClick={onClick}
+      className='cursor-pointer overflow-hidden rounded-xl bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg'
+    >
       <img
         src={resource.thumbnail}
         alt={resource.title}
-        className='w-full h-40 object-cover rounded'
+        className='h-48 w-full object-cover'
       />
-
-      <h3 className='mt-2 font-semibold text-lg'>{resource.title}</h3>
-
-      <p className='text-sm text-gray-600'>{resource.duration} min</p>
-
-      <div className='flex gap-2 mt-2 flex-wrap'>
-        {resource.tags.slice(0, 3).map((tag) => (
-          <span key={tag} className='text-xs bg-gray-200 px-2 py-1 rounded'>
-            {tag}
+      <div className='p-5'>
+        <div className='mb-3 flex items-center justify-between'>
+          <span className='rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700'>
+            {resource.duration} min
           </span>
-        ))}
+        </div>
+        <h3 className='mb-3 text-lg font-semibold text-slate-900'>
+          {resource.title}
+        </h3>
+        <div className='flex flex-wrap gap-2'>
+          {resource.tags.slice(0, 3).map((tag) => (
+            <span
+              key={tag}
+              className='rounded-full bg-slate-100 px-2 py-1 text-xs text-slate-600'
+            >
+              #{tag}
+            </span>
+          ))}
+        </div>
       </div>
-    </div>
+    </article>
   );
 }

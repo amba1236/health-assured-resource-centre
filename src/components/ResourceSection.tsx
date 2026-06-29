@@ -4,16 +4,27 @@ import ResourceCard from './ResourceCard';
 type Props = {
   category: string;
   items: Resource[];
+  onSelect: (resource: Resource) => void;
 };
 
-export default function ResourceSection({ category, items }: Props) {
+export default function ResourceSection({ category, items, onSelect }: Props) {
   return (
-    <section className='mb-8'>
-      <h2 className='text-2xl font-bold mb-4'>{category}</h2>
+    <section className='mb-12'>
+      <div className='mb-6 border-b border-slate-200 pb-2'>
+        <h2 className='text-2xl font-bold text-slate-800'>{category}</h2>
 
-      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
+        <p className='mt-1 text-sm text-slate-500'>
+          {items.length} resource{items.length !== 1 ? 's' : ''}
+        </p>
+      </div>
+
+      <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {items.map((item) => (
-          <ResourceCard key={item.id} resource={item} />
+          <ResourceCard
+            key={item.id}
+            resource={item}
+            onClick={() => onSelect(item)}
+          />
         ))}
       </div>
     </section>
