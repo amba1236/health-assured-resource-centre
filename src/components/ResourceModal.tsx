@@ -20,20 +20,20 @@ export default function ResourceModal({
 }: ResourceModalProps) {
   return (
     <div
-      className='fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4'
+      className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4'
       onClick={onClose}
     >
       <div
-        className='w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-xl'
+        className='max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl bg-white shadow-2xl'
         onClick={(event) => event.stopPropagation()}
       >
         <img
           src={resource.thumbnail}
           alt={resource.title}
-          className='h-64 w-full object-cover'
+          className='h-64 w-full border-b border-slate-200 object-cover'
         />
         <div className='p-6'>
-          <span className='inline-flex rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700'>
+          <span className='inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-sm font-medium text-emerald-700'>
             {categoryIcons[resource.category]} {resource.category}
           </span>
           <h2 className='mt-4 text-2xl font-bold text-slate-900'>
@@ -46,23 +46,33 @@ export default function ResourceModal({
             {resource.tags.map((tag) => (
               <span
                 key={tag}
-                className='rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-600'
+                className='rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700'
               >
-                #{tag}
+                {tag}
               </span>
             ))}
           </div>
-          <div className='mt-6 space-y-1 text-sm text-slate-500'>
-            <p>
-              <strong>Duration:</strong> {resource.duration} minutes
-            </p>
-            <p>
-              <strong>Uploaded:</strong> {resource.date_uploaded}
-            </p>
+          <div className='mt-8 grid grid-cols-2 gap-4'>
+            <div className='rounded-xl bg-slate-50 p-4'>
+              <p className='text-xs font-semibold uppercase tracking-wide text-slate-500'>
+                Duration
+              </p>
+              <p className='mt-1 text-lg font-semibold text-slate-900'>
+                {resource.duration} min
+              </p>
+            </div>
+            <div className='rounded-xl bg-slate-50 p-4'>
+              <p className='text-xs font-semibold uppercase tracking-wide text-slate-500'>
+                Uploaded
+              </p>
+              <p className='mt-1 text-lg font-semibold text-slate-900'>
+                {resource.date_uploaded}
+              </p>
+            </div>
           </div>
           <button
             onClick={onClose}
-            className='mt-8 w-full rounded-lg bg-slate-900 py-3 font-medium text-white transition hover:bg-slate-700'
+            className='mt-8 w-full rounded-xl bg-emerald-600 py-3 font-medium text-white transition hover:bg-emerald-700'
           >
             Close
           </button>
