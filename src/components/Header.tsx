@@ -12,16 +12,16 @@ export default function Header({
   onSortChange,
 }: HeaderProps) {
   return (
-    <header className='mb-10 border-b border-slate-200 pb-6'>
-      <div className='max-w-3xl'>
+    <header className='mb-10 pb-6'>
+      <div className='flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between'>
         <p className='text-sm font-semibold uppercase tracking-wider text-emerald-600'>
           Health Assured
         </p>
-        <div className='mt-6 grid gap-4 md:grid-cols-2'>
-          <div>
+        <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>
+          <div className='flex items-center gap-3'>
             <label
               htmlFor='search'
-              className='mb-2 block text-sm font-medium text-slate-700'
+              className='whitespace-nowrap text-sm font-medium text-slate-700'
             >
               Search
             </label>
@@ -31,15 +31,15 @@ export default function Header({
               placeholder='Search by title or tag...'
               value={searchTerm}
               onChange={(event) => onSearchChange(event.target.value)}
-              className='w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-emerald-500 focus:outline-none'
+              className='w-72 rounded-lg border border-slate-300 px-4 py-2 focus:border-emerald-500 focus:outline-none'
             />
           </div>
-          <div>
+          <div className='flex items-center gap-3'>
             <label
               htmlFor='sort'
-              className='mb-2 block text-sm font-medium text-slate-700'
+              className='whitespace-nowrap text-sm font-medium text-slate-700'
             >
-              Sort by date
+              Sort
             </label>
             <select
               id='sort'
@@ -47,7 +47,7 @@ export default function Header({
               onChange={(event) =>
                 onSortChange(event.target.value as 'newest' | 'oldest')
               }
-              className='w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-emerald-500 focus:outline-none'
+              className='rounded-lg border border-slate-300 px-4 py-2 focus:border-emerald-500 focus:outline-none'
             >
               <option value='newest'>Newest first</option>
               <option value='oldest'>Oldest first</option>
