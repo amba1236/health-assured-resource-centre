@@ -1,75 +1,154 @@
-# React + TypeScript + Vite
+# Health Assured Resource Centre
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive React application for browsing wellbeing resources. Resources are grouped by category and can be searched, sorted, and viewed in a detailed modal.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Display resources grouped by category
+- Search resources by title or tags
+- Sort resources by upload date (Newest or Oldest)
+- Responsive card layout
+- Resource details modal
+- Reusable React components
+- Utility functions with unit tests
+- Built with TypeScript and Tailwind CSS
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- Vitest
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18+
+- npm
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Clone the repository:
 
+```bash
+git clone https://github.com/amba1236/health-assured-resource-centre.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the application in your browser:
 
 ```
+http://localhost:5173
+```
+
+## Available Scripts
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Build the project:
+
+```bash
+npm run build
+```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+Run unit tests:
+
+```bash
+npm run test
+```
+
+Run the linter:
+
+```bash
+npm run lint
+```
+
+## Project Structure
+
+```
+src/
+├── components/
+├── data/
+├── test/
+├── types/
+├── utils/
+├── App.tsx
+├── index.css
+└── main.tsx
+```
+
+## Key Functionality
+
+### Resource Listing
+
+Resources are displayed as reusable cards grouped by category.
+
+### Search
+
+Resources can be filtered by:
+
+- Title
+- Tags
+
+### Sorting
+
+Resources can be sorted by upload date:
+
+- Newest first
+- Oldest first
+
+### Resource Modal
+
+Selecting a resource opens a modal displaying:
+
+- Image
+- Category
+- Description
+- Tags
+- Duration
+- Upload date
+
+## Testing
+
+Utility functions are covered with unit tests using Vitest, including:
+
+- Resource grouping
+- Resource filtering
+- Resource sorting
+
+## Future Improvements
+
+- Pagination or infinite scrolling
+- Category filters
+- Allow users to bookmark or favourite resources.
+- Keyboard navigation for the modal
+- API integration instead of local mock data
+- Support dark mode
+- Add resource sharing functionality
+
+## Author
+
+Amena
