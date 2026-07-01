@@ -16,7 +16,6 @@ export default function ResourceSection({ category, items, onSelect }: Props) {
           {items.length} item{items.length !== 1 ? 's' : ''}
         </p>
       </div>
-
       <div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
         {items.map((item) => (
           <ResourceCard
